@@ -1,0 +1,548 @@
+[
+	{
+		"model":"project.userType",
+		"pk":0,
+		"fields":{
+			"type":"regular"
+		}
+	},
+	{
+		"model":"project.userType",
+		"pk":1,
+		"fields":{
+			"type":"operator"
+		}
+	},
+	{
+		"model":"project.deviceType",
+		"pk":0,
+		"fields":{
+			"device_type":"Air Temperature",
+			"unit":"degrees Celsius"
+		}
+	},
+	{
+		"model":"project.deviceType",
+		"pk":1,
+		"fields":{
+			"device_type":"Air Temperature",
+			"unit":"degrees Fahrenheit"
+		}
+	},
+	{
+		"model":"project.deviceType",
+		"pk":2,
+		"fields":{
+			"device_type":"Air Temperature",
+			"unit":"degrees Kelvin"
+		}
+	},
+	{
+		"model":"project.deviceType",
+		"pk":3,
+		"fields":{
+			"device_type":"Air Pressure",
+			"unit":"kPa"
+		}
+	},
+	{
+		"model":"project.deviceType",
+		"pk":4,
+		"fields":{
+			"device_type":"Air Pressure",
+			"unit":"atm"
+		}
+	},
+	{
+		"model":"project.deviceType",
+		"pk":5,
+		"fields":{
+			"device_type":"Air Pressure",
+			"unit":"psi"
+		}
+	},
+	{
+		"model":"project.deviceType",
+		"pk":6,
+		"fields":{
+			"device_type":"Wind Speed",
+			"unit":"k.p.h"
+		}
+	},
+	{
+		"model":"project.deviceType",
+		"pk":7,
+		"fields":{
+			"device_type":"Wind Speed",
+			"unit":"m.p.h"
+		}
+	},
+	{
+		"model":"project.deviceType",
+		"pk":8,
+		"fields":{
+			"device_type":"Wind Direction",
+			"unit":"degrees off North"
+		}
+	},
+	{
+		"model":"project.status",
+		"pk":0,
+		"fields":{
+			"status":"offline"
+		}
+	},
+	{
+		"model":"project.status",
+		"pk":1,
+		"fields":{
+			"status":"online"
+		}
+	},
+	{
+		"model":"project.station",
+		"pk":0,
+		"fields":{
+			"name":"Richardson's Station",
+			"operator": 1,
+			"latitude":33.57,
+			"longtitude":83.23,
+			"status":1
+		}
+	},
+	{
+		"model":"project.station",
+		"pk":1,
+		"fields":{
+			"name":"Williamson's Station",
+			"operator": 1,
+			"latitude":33.75,
+			"longtitude":84.39,
+			"status":1
+		}
+	},
+	{
+		"model":"project.station",
+		"pk":2,
+		"fields":{
+			"name":"Zhu's Station",
+			"operator": 1,
+			"latitude":32.01,
+			"longtitude":81.11,
+			"status":1
+		}
+	},
+	{
+		"model":"project.station",
+		"pk":3,
+		"fields":{
+			"name":"Polakovic's Station",
+			"operator": 1,
+			"latitude":33.46,
+			"longtitude":81.96,
+			"status":1
+		}
+	},
+	{
+		"model":"project.device",
+		"pk":0,
+		"fields":{
+			"name":"Richardson's Air Temperature",
+			"station":0,
+			"deviceType":0,
+			"last_reading_time":"2014-05-25T14:30:15-04:00",
+			"status":1
+		}
+	},
+	{
+		"model":"project.device",
+		"pk":1,
+		"fields":{
+			"name":"Richardson's Air Pressure",
+			"station":0,
+			"deviceType":3,
+			"last_reading_time":"2014-05-25T14:30:10-04:00",
+			"status":1
+		}
+	},
+	{
+		"model":"project.device",
+		"pk":2,
+		"fields":{
+			"name":"Richardson's Wind Speed",
+			"station":0,
+			"deviceType":6,
+			"last_reading_time":"2014-05-25T14:30:10-04:00",
+			"status":1
+		}
+	},
+		{
+		"model":"project.device",
+		"pk":3,
+		"fields":{
+			"name":"Richardson's Wind Direction",
+			"station":0,
+			"deviceType":8,
+			"last_reading_time":"2014-05-25T14:30:10-04:00",
+			"status":1
+		}
+	},
+	{
+		"model":"project.device",
+		"pk":4,
+		"fields":{
+			"name":"Williamson's Air Temperature",
+			"station":1,
+			"deviceType":1,
+			"last_reading_time":"2014-05-25T14:30:10-04:00",
+			"status":1
+		}
+	},
+	{
+		"model":"project.device",
+		"pk":5,
+		"fields":{
+			"name":"Williamson's Air Pressure",
+			"station":1,
+			"deviceType":4,
+			"last_reading_time":"2014-05-25T14:30:10-04:00",
+			"status":1
+		}
+	},
+	{
+		"model":"project.device",
+		"pk":6,
+		"fields":{
+			"name":"Williamson's Wind Speed",
+			"station":1,
+			"deviceType":7,
+			"last_reading_time":"2014-05-25T14:30:10-04:00",
+			"status":1
+		}
+	},
+	{
+		"model":"project.device",
+		"pk":7,
+		"fields":{
+			"name":"Williamson's Wind Direction",
+			"station":1,
+			"deviceType":8,
+			"last_reading_time":"2014-05-25T14:30:10-04:00",
+			"status":1
+		}
+	},
+	{
+		"model":"project.device",
+		"pk":8,
+		"fields":{
+			"name":"Zhu's Air Temperature",
+			"station":2,
+			"deviceType":2,
+			"last_reading_time":"2014-05-25T14:30:10-04:00",
+			"status":1
+		}
+	},
+	{
+		"model":"project.device",
+		"pk":9,
+		"fields":{
+			"name":"Zhu's Air Pressure",
+			"station":2,
+			"deviceType":5,
+			"last_reading_time":"2014-05-25T14:30:10-04:00",
+			"status":1
+		}
+	},
+	{
+		"model":"project.device",
+		"pk":10,
+		"fields":{
+			"name":"Zhu's Wind Speed",
+			"station":2,
+			"deviceType":6,
+			"last_reading_time":"2014-05-25T14:30:10-04:00",
+			"status":1
+		}
+	},
+	{
+		"model":"project.device",
+		"pk":11,
+		"fields":{
+			"name":"Zhu's Wind Direction",
+			"station":2,
+			"deviceType":8,
+			"last_reading_time":"2014-05-25T14:30:10-04:00",
+			"status":1
+		}
+	},
+	{
+		"model":"project.device",
+		"pk":12,
+		"fields":{
+			"name":"Polakovic's Air Temperature",
+			"station":3,
+			"deviceType":1,
+			"last_reading_time":"2014-05-25T14:30:10-04:00",
+			"status":1
+		}
+	},
+	{
+		"model":"project.device",
+		"pk":13,
+		"fields":{
+			"name":"Polakovic's Air Pressure",
+			"station":3,
+			"deviceType":4,
+			"last_reading_time":"2014-05-25T14:30:10-04:00",
+			"status":1
+		}
+	},
+	{
+		"model":"project.device",
+		"pk":14,
+		"fields":{
+			"name":"Polakovic's Wind Speed",
+			"station":3,
+			"deviceType":7,
+			"last_reading_time":"2014-05-25T14:30:10-04:00",
+			"status":1
+		}
+	},
+	{
+		"model":"project.device",
+		"pk":15,
+		"fields":{
+			"name":"Polakovic's Wind Direction",
+			"station":3,
+			"deviceType":8,
+			"last_reading_time":"2014-05-25T14:30:10-04:00",
+			"status":1
+		}
+	},
+	{
+		"model":"project.report",
+		"pk":0,
+		"fields":{
+			"device": 0,
+			"content":"25",
+			"reading_time":"2014-05-25T14:30:15-04:00",
+			"timestamp":"2014-05-25T14:30:15-04:00"
+		}
+	},
+	{
+		"model":"project.report",
+		"pk":18,
+		"fields":{
+			"device": 1,
+			"content":"101.888",
+			"reading_time":"2014-07-26T08:17:22-04:00",
+			"timestamp":"2014-07-26T08:17:22-04:00"
+		}
+	},
+	{
+		"model":"project.report",
+		"pk":1,
+		"fields":{
+			"device": 0,
+			"content":"28",
+			"reading_time":"2014-05-25T14:30:15-04:00",
+			"timestamp":"2014-05-25T14:30:15-04:00"
+		}
+	},
+	{
+		"model":"project.report",
+		"pk":2,
+		"fields":{
+			"device": 1,
+			"content":"77",
+			"reading_time":"2014-05-25T14:30:15-04:00",
+			"timestamp":"2014-05-25T14:30:15-04:00"
+		}
+	},
+	{
+		"model":"project.report",
+		"pk":3,
+		"fields":{
+			"device": 1,
+			"content":"82",
+			"reading_time":"2014-05-25T14:30:15-04:00",
+			"timestamp":"2014-05-25T14:30:15-04:00"
+		}
+	},
+	{
+		"model":"project.report",
+		"pk":4,
+		"fields":{
+			"device": 2,
+			"content":"298",
+			"reading_time":"2014-05-25T14:30:15-04:00",
+			"timestamp":"2014-05-25T14:30:15-04:00"
+		}
+	},
+	{
+		"model":"project.report",
+		"pk":5,
+		"fields":{
+			"device": 2,
+			"content":"301",
+			"reading_time":"2014-05-25T14:30:15-04:00",
+			"timestamp":"2014-05-25T14:30:15-04:00"
+		}
+	},
+	{
+		"model":"project.report",
+		"pk":6,
+		"fields":{
+			"device": 3,
+			"content":"3.99",
+			"reading_time":"2014-05-25T14:30:10-04:00",
+			"timestamp":"2014-05-25T14:30:10-04:00"
+		}
+	},
+	{
+		"model":"project.report",
+		"pk":7,
+		"fields":{
+			"device": 3,
+			"content":"4.06",
+			"reading_time":"2014-05-25T14:30:15-04:00",
+			"timestamp":"2014-05-25T14:30:15-04:00"
+		}
+	},
+	{
+		"model":"project.report",
+		"pk":8,
+		"fields":{
+			"device": 4,
+			"content":".039",
+			"reading_time":"2014-05-25T14:30:15-04:00",
+			"timestamp":"2014-05-25T14:30:15-04:00"
+		}
+	},
+	{
+		"model":"project.report",
+		"pk":9,
+		"fields":{
+			"device": 4,
+			"content":".040",
+			"reading_time":"2014-05-25T14:30:15-04:00",
+			"timestamp":"2014-05-25T14:30:15-04:00"
+		}
+	},
+	{
+		"model":"project.report",
+		"pk":10,
+		"fields":{
+			"device": 5,
+			"content":".578",
+			"reading_time":"2014-05-25T14:30:15-04:00",
+			"timestamp":"2014-05-25T14:30:15-04:00"
+		}
+	},
+	{
+		"model":"project.report",
+		"pk":11,
+		"fields":{
+			"device": 5,
+			"content":".588",
+			"reading_time":"2014-05-25T14:30:15-04:00",
+			"timestamp":"2014-05-25T14:30:15-04:00"
+		}
+	},
+	{
+		"model":"project.report",
+		"pk":12,
+		"fields":{
+			"device": 6,
+			"content":"8",
+			"reading_time":"2014-05-25T14:30:15-04:00",
+			"timestamp":"2014-05-25T14:30:15-04:00"
+		}
+	},
+	{
+		"model":"project.report",
+		"pk":13,
+		"fields":{
+			"device": 6,
+			"content":"19",
+			"reading_time":"2014-05-25T14:30:15-04:00",
+			"timestamp":"2014-05-25T14:30:15-04:00"
+		}
+	},
+	{
+		"model":"project.report",
+		"pk":14,
+		"fields":{
+			"device": 7,
+			"content":"5",
+			"reading_time":"2014-05-25T14:30:15-04:00",
+			"timestamp":"2014-05-25T14:30:15-04:00"
+		}
+	},
+	{
+		"model":"project.report",
+		"pk":15,
+		"fields":{
+			"device": 7,
+			"content":"12",
+			"reading_time":"2014-05-25T14:30:15-04:00",
+			"timestamp":"2014-05-25T14:30:15-04:00"
+		}
+	},
+	{
+		"model":"project.report",
+		"pk":16,
+		"fields":{
+			"device": 8,
+			"content":"47",
+			"reading_time":"2014-05-25T14:30:15-04:00",
+			"timestamp":"2014-05-25T14:30:15-04:00"
+		}
+	},
+	{
+		"model":"project.report",
+		"pk":17,
+		"fields":{
+			"device": 8,
+			"content":"-20",
+			"reading_time":"2014-05-25T14:30:15-04:00",
+			"timestamp":"2014-05-25T14:30:15-04:00"
+		}
+	},
+	{
+		"model":"project.following",
+		"pk":0,
+		"fields":{
+			"station": 0,
+			"user": 1,
+			"status":1
+		}
+	},
+	{
+		"model":"project.following",
+		"pk":1,
+		"fields":{
+			"station": 1,
+			"user": 1,
+			"status":1
+		}
+	},
+	{
+		"model":"project.following",
+		"pk":2,
+		"fields":{
+			"station": 2,
+			"user": 1,
+			"status":1
+		}
+	},
+	{
+		"model":"project.following",
+		"pk":3,
+		"fields":{
+			"station": 3,
+			"user": 1,
+			"status":1
+		}
+	}
+]

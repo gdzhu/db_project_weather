@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+
+<div class="container">
+	{% block content %}
+	<form class="" action="../upload" method="get">
+		<div class="input-group">
+			<span class="input-group-addon">Station: </span> 
+			<select class="input-group-addon" style='width: 200px' id="select_station" onchange="this.form.submit()" name="select_station">
+			<option selected disabled hidden value=''></option>
+			{% if stations %}
+				{% for s in stations %}
+					<option value='{{s.id}}'>{{s.name}}</option>
+				{% endfor %}
+			{% else %}
+				<option value='-1'>ERROR</option>
+			{% endif %}
+			</select>
+		</div><br/>
+	</form>
+	<form class="" action="../upload_result" method="get">
+		<div class="input-group">
+			<input type='hidden' name='station' id='station'>
+			<span class="input-group-addon">Device: </span> 
+			<select class="input-group-addon" style='width: 250px' id="select_device" name='device' onChange="t=[{{ dtypes }}];document.getElementById('unit').value=t[this.selectedIndex-1]" required>
+			<option selected disabled hidden value=''></option>
+			{% if devices %}
+				{% for d in devices %}
+					<option value='{{d.name}}'>{{d.name}}</option>
+				{% endfor %}
+			{% endif %}
+			</select>
+		</div><br/>
+		<div class="input-group">
+			<span class="input-group-addon">Report: </span> 
+			<input type="text" class="form-control" name='report' id='report' style='width:150px;float:none' required>
+			<input type="text" class="form-control" id='unit' style='width:150px;float:none' disabled>
+		</div><br/>
+		<div class="input-group">
+			<span class="input-group-addon">Timestamp</span> 
+			<input type="text" class="form-control" name="timestamp" id="datetimepicker" data-date-format="YYYY-MM-DD HH:mm:ss" required>
+			<span class="input-group-addon" id="setToNow">set to now</span> 
+			<script type="text/javascript">
+			var q = function () {
+			    qs = window.location.href.split("?")[1];
+			    var params = {}, tokens, re = /[?&]?([^=]+)=([^&]*)/g;
+			    while (tokens = re.exec(qs))
+			        params[decodeURIComponent(tokens[1])]= decodeURIComponent(tokens[2]);
+			    return params;
+			} ();
+			$(document).ready(function(){
+					$('#datetimepicker').datetimepicker();
+					$('#setToNow').click(function(){
+						$('#datetimepicker').val(moment().format("YYYY-MM-DD HH:mm:ss"));
+					});
+					document.getElementById('select_station').selectedIndex=parseInt(q['select_station']) + 1;
+					document.getElementById('station').value =
+						document.getElementById('select_station').options[document.getElementById('select_station').selectedIndex].innerHTML;
+					});
+			</script>
+		</div><br/>
+			<input class="btn btn-default pull-right btn-info" type="submit" value="Submit">
+	</form>
+	{% endblock %}
+</div>
+
+

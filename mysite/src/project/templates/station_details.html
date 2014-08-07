@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+<div class="container">
+	{% block content %} 
+	{% load following_tags %}
+	<div class="panel panel-primary">
+		<!-- XXX Add convenient follow/unfollow button -->
+		<div class= "panel-heading"><h1>{{ station.name }} <span class="label label-{{station.status.status|status_label_color}} pull-right">{{ station.status.status }}</span></h1></div>
+		<div class="panel-body">
+			<div class="panel panel-info">
+				<div class="panel-heading"><h2>Location</h2></div>
+				<div class="panel-body">
+					<p>Latitude: {{ station.latitude|float_to_latlong:"latitude" }} </p>
+					<!-- XXX model's field name is longtitude instead of longitude.  Change that there and then here -->
+					<p>Longitude: {{ station.longtitude| float_to_latlong:"longitude" }} </p>
+				</div>
+				
+			</div>
+			<div class="panel panel-info">
+				<div class= "panel-heading"><h2> Devices</h2></div>
+				{% for device in devices %}
+				<div class="list-group">
+					<a href="{% url 'project-device-details' device.id %}" class="list-group-item">
+						<h3 class="list-group-item-heading">{{ device.name }}<span class="label label-{{device.status.status|status_label_color}} pull-right">{{ device.status.status }}</span></h3>
+						<p class="list-group-item-text">{{ device.deviceType.device_type }} ({{ device.deviceType.unit }})</p>
+						<p class="list-group-item-text">Latest Reading: {{ device.last_reading_time }}</p>
+					</a> 
+				</div>
+				{% endfor %}
+			</div>
+		</div>
+	</div>
+	{% endblock %}
+</div>
+
+<div class="container">
+</div>
+
+

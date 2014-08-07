@@ -1,0 +1,105 @@
+{% extends "base.html" %}
+
+<div class="container">
+	{% block content %}
+	<table><tr><td>
+	<h4>Add</h4>
+		<div class="input-group">
+			<span class="input-group-addon">Station: </span>
+			<select class="input-group-addon" style='width: 200px' name="add_station" onchange='if (this.options[this.selectedIndex].value=="new") {document.getElementById("new_station").style.display="inline";document.getElementById("new_device").style.display="none";} else {document.getElementById("new_station").style.display="none";document.getElementById("new_device").style.display="inline";};document.getElementById("sname").value=this.options[this.selectedIndex].text;' required>
+			<option selected disabled hidden value=''></option>
+			{% if stations %}
+				{% for s in stations %}
+					<option value='{{s.id}}'>{{s.name}}</option>
+				{% endfor %}
+			{% endif %}
+				<option value='new'>New Station...</option>
+			</select>
+		</div><br/>
+			<div id='new_station' style='display:none'>
+				<form class="" action="../stations/" method="get">
+					New Station:
+					<div class="input-group">
+						<span class="input-group-addon">Name: </span>
+						<input type="text" class="form-control" name="station_name">
+					</div>
+					<div class="input-group">
+						<span class="input-group-addon">Latitude: </span>
+						<input type="text" class="form-control" name="station_lat">
+					</div>
+					<div class="input-group">
+						<span class="input-group-addon">Longitude: </span>
+						<input type="text" class="form-control" name="station_long">
+					</div>
+					<input type='submit' class='btn btn-default' value='add'>
+				</form>
+			</div>
+			<div id='new_device' style='display:none'>
+				<form class="" action="../stations/" method="get">
+					<input type='hidden' id='sname' name='device_station'>
+					New Device:
+					<div class="input-group">
+						<span class="input-group-addon">Name: </span>
+							<input type="text" class="form-control" name='device_name'>
+					</div>
+					<div class="input-group">
+						<span class="input-group-addon">DeviceType: </span>
+						<select class="input-group-addon" style='width: 200px' name="devicetype" required>
+							<option selected disabled hidden value=''></option>
+							{% if types %}
+								{% for t in types %}
+								<option value='{{t.device_type}}'>{{t.device_type}} [{{t.unit}}]</option>
+								{% endfor %}
+							{% endif %}
+						</select>
+					</div>
+					<input type='submit' class='btn btn-default' value='add'>
+				</form>
+			</div>
+	</td></tr><tr><td>
+	<h4>Remove</h4>
+	<form class="" action="../stations/" method="get">
+		<div class="input-group">
+			<span class="input-group-addon">Station: </span>
+			<select class="input-group-addon" style='width: 200px' id="select_station" name="remove_station" required>
+			<option selected disabled hidden value=''></option>
+			{% if stations %}
+				{% for s in stations %}
+					<option value='{{s.id}}'>{{s.name}}</option>
+				{% endfor %}
+			{% endif %}
+			</select>
+			<input type='submit' value='Remove'>
+		</div><br/>
+	</form>
+	<form class="" action="../stations/" method="get">
+		<div class="input-group">
+			<span class="input-group-addon">Device: </span> 
+			<select class="input-group-addon" style='width: 250px' id="select_device" onchange='document.getElementById("device_input").value=this.options[this.selectedIndex].text' required>
+			<option selected disabled hidden value=''></option>
+			{% if devices %}
+				{% for d in devices %}
+					<option value='{{d.station.name}}' style='display:none'>{{d.name}}</option>
+				{% endfor %}
+			{% endif %}
+			</select>
+			<input type='hidden' name='remove_device' id='device_input'>
+			<input type='submit' value='Remove'>
+	</form>
+			<script type="text/javascript">
+				document.getElementById("select_station").onchange = function () {
+					for (i=1;i<{{ devices.count }}+1;i++)
+						if (document.getElementById('select_device').options[i].value==(document.getElementById('select_station').options[document.getElementById('select_station').selectedIndex].text)) {
+							document.getElementById('select_device').options[i].style.display = 'inline';	
+						} else {
+							document.getElementById('select_device').options[i].style.display = 'none';	
+						}
+					};			
+			</script>
+		</div><br/>
+		<div><h3>WARNING: This will irreveribly remove the station or device</h3></div>
+	</td></tr></table>
+	{% endblock %}
+</div>
+
+

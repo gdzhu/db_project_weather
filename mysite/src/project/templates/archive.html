@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+<div class="container">
+	{% block content %} 
+	{% for post in posts %}
+	<div class="panel panel-info">
+		<div class="pannel panel-heading">
+			<a class="panel-title" href="#{{ post.title}}"> {{ post.title}}</a>
+		</div>
+		<div class="panel-body">
+			<p>{{ post.content }}</p>
+		</div>
+		<div class="panel-footer">
+			<p class="panel-footing">{{ post.timestamp|date:"Y, F jS, H:i:s"}}</p>
+		</div>
+	</div>
+	{% endfor %} 
+</div>
+
+<div class="container">
+	<div class="list-group">
+		{% for post in posts %} 
+		<a href="#" class="list-group-item">
+			<h4 class="list-group-item-heading">{{ post.title}}</h4>
+			<p class="list-group-item-text">{{ post.content }}</p>
+			<p class="list-group-item-text">{{ post.timestamp|date:"Y, F jS, H:i:s"}}</p>
+		</a> 
+		{% endfor %} 
+		{% endblock %}
+	</div>
+</div>
+

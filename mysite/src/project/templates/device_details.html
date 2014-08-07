@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+<div class="container">
+	{% block content %} 
+	{% load following_tags %}
+	<div class="panel panel-{{device.status.status|status_label_color}}">
+		<div class= "panel-heading"><h1>{{ device.name }}</h1></div>
+		<div class="panel-body">
+			<div class="panel panel-default">
+				<div class= "panel-heading"><h2>Device Information</h2></div>
+					<div class="panel-body">
+						<div class="list-group">
+							<div class="list-group-item">   
+								<div class="list-group-item-heading"> <h3> Station </h3> </div>
+								<a href="{% url 'project-station-details' device.station.id %}" ><div class="list-group-item-text"><p>{{ device.station.name }}</p> </div></a>
+							</div>
+							<div class="list-group-item">
+								<div class="list-group-item-heading"> <h3>Location</h3> </div>
+									<!-- XXX "longtitude" -->
+								<div class="list-group-item-text"> 
+									<p>{{ device.station.latitude|float_to_latlong:"latitude" }}, {{ device.station.longtitude|float_to_latlong:"longitude" }}</p>  
+								</div>
+							</div>
+							<div class="list-group-item">
+								<div class="list-group-item-heading"> <h3>Status: <span class="label label-{{device.status.status|status_label_color}}">{{ device.status.status }}</span> </h3> </div>
+							</div>
+							<div class="list-group-item">
+								<div class="list-group-item-heading"> <h3>Most Recent Report</h3></div> 
+								<div class="list-group-item-text" > <p>{{ device.last_reading_time }}</p> </div>
+							</div>
+							<div class="list-group-item">
+								<div class="list-group-item-heading"> <h3>Number of Reports (to date)</h3></div> 
+								<div class="list-group-item-text" > <p> {{ reports.count }} </p></div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="panel panel-default">
+				<div class= "panel-heading"><h2>Recent Reports</h2></div>
+				<table class="table table-bordered" >
+					<tr>
+						<th>Report Content</th>
+						<th>Report Time</th>
+					</tr>
+				{% for report in reports %}
+					<tr>
+						<td>{{ report.content }} {{ report.device.deviceType.unit }}</td>
+						<td>{{ report.reading_time }}</td>
+					</tr>
+				{% endfor %}
+				</table>
+			</div>
+			<div class="panel panel-default">
+				<div class= "panel-heading"><h2>Download Reports</h2></div>
+				<div class="panel-body">
+					<form action="{% url 'project-download-reports' device.id %}" method="post">
+					{% csrf_token %}
+					<!-- XXX start date -->
+					<!-- XXX end date -->
+					<!-- XXX submit button -->
+					<button class="btn btn-default btn-lg" type="submit"> <strong>Download</strong></button>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+	{% endblock %}
+</div>
+
+<div class="container">
+</div>
+

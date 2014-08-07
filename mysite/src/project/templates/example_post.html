@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+<div class="container">
+	{% block content %}
+	<form class="" action="../post_result" method="get">
+		<div class="input-group">
+			<span class="input-group-addon">id</span> 
+			<input type="text" class="form-control" name="title" required>
+		</div><br/>
+		<div class="input-group">
+			<span class="input-group-addon">Content</span>
+			<textarea class="form-control" name="content" required></textarea>
+		</div><br/>
+		<div class="input-group">
+			<span class="input-group-addon">Timestamp</span> 
+			<input type="text" class="form-control" name="timestamp" id="datetimepicker" data-date-format="YYYY-MM-DD HH:mm:ss" required>
+			<span class="input-group-addon" id="setToNow">set to now</span> 
+			<script type="text/javascript">
+			$(document).ready(function(){
+					$('#datetimepicker').datetimepicker();
+					$('#setToNow').click(function(){
+						$('#datetimepicker').val(moment().format("YYYY-MM-DD HH:mm:ss"));
+					})});
+			</script>
+		</div><br/>
+			<input class="btn btn-default pull-right btn-info" type="submit" value="Submit">
+	</form>
+	{% endblock %}
+</div>
+
+
